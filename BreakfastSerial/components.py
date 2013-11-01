@@ -129,6 +129,16 @@ class RGBLed(EventEmitter):
     self._red.off(); self._green.off(); self._blue.off()
     return self
 
+  def rgb(self, r,g,b):
+    self._red.brightness(r)
+    self._green.brightness(g)
+    self._blue.brightness(b)
+
+  def html(self,html):
+    self._red.brightness(int("0x"+html[:2],16) * 100 / 255)
+    self._green.brightness(int("0x"+html[2:4],16) * 100 / 255)
+    self._blue.brightness(int("0x"+html[4:],16) * 100 / 255)
+
   def red(self):
     self._red.on(); self._green.off(); self._blue.off()
     return self
